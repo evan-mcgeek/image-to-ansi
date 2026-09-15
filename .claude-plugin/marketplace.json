@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "image-to-ansi",
+  "owner": {
+    "name": "Ivan Yanowsky",
+    "email": "evan.mcgeek@gmail.com"
+  },
+  "metadata": {
+    "description": "Convert images to terminal-renderable ANSI/ASCII art.",
+    "version": "0.0.1"
+  },
+  "plugins": [
+    {
+      "name": "image-to-ansi",
+      "description": "Convert an image into a terminal-renderable string of ANSI colour codes and block/ASCII characters \u2014 CLI splash screens, TUI banners, neofetch-style logos, README art.",
+      "version": "0.0.1",
+      "author": {
+        "name": "Ivan Yanowsky"
+      },
+      "source": "./"
+    }
+  ]
+}
