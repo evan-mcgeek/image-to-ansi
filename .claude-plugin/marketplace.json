@@ -1,12 +1,12 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "image-to-ansi",
+  "name": "evan-mcgeek-skills",
   "owner": {
     "name": "Ivan Yanowsky",
     "email": "evan.mcgeek@gmail.com"
   },
   "metadata": {
-    "description": "Convert images to terminal-renderable ANSI/ASCII art.",
+    "description": "Ivan Yanowsky's Claude Code skills.",
     "version": "0.0.1"
   },
   "plugins": [

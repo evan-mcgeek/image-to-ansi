@@ -62,8 +62,8 @@ so this mode inks the subject in plain characters instead):
 ## Install
 
 ```
-claude plugin marketplace add evan-mcgeek/image-to-ansi
-claude plugin install image-to-ansi@image-to-ansi
+claude plugin marketplace add evan-mcgeek/skills
+claude plugin install image-to-ansi@evan-mcgeek-skills
 ```
 
 Restart Claude Code. The skill activates automatically — no need to invoke it

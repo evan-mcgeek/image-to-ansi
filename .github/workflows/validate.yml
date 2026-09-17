@@ -1,0 +1,41 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate plugin and skill
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Validate SKILL.md frontmatter
+        run: |
+          for f in $(find skills -name SKILL.md); do
+            head -1 "$f" | grep -q '^---$' || { echo "::error file=$f::missing YAML frontmatter"; exit 1; }
+            grep -q '^name:' "$f" || { echo "::error file=$f::missing 'name' in frontmatter"; exit 1; }
+            grep -q '^description:' "$f" || { echo "::error file=$f::missing 'description' in frontmatter"; exit 1; }
+            echo "OK: $f"
+          done
+
+      # Unpinned deliberately: this needs to validate against whatever Claude Code
+      # version installers actually get, not a version pinned the day this workflow
+      # was written. `claude --version` below records what actually ran.
+      - name: Install Claude Code CLI
+        run: |
+          npm install --global @anthropic-ai/claude-code
+          claude --version
+
+      - name: Validate plugin manifest
+        run: claude plugin validate .
